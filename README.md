@@ -3,19 +3,19 @@ Some detection tasks are better represented by dots instead of the traditional b
 
 This type of detection can be useful for counting crowds or detecting objects that are only a few pixels in diameter like eye pupils or aerial images of crops.
 
-This repository serves as a playground for this type of detection.  All aspects of this repository like the losses, thresholding function or heatmap functions can easily be extended or modified, and different combinations can be tried out.
+All aspects of this repository like the losses, thresholding function or heatmap functions can easily be extended or modified, and different combinations can be tried out.
 
 ## How does it work?
 The annotated points in the image are used to make a heatmap. Each point is a Gaussian peak, and the task is to use semantic segmentation to regress the heatmap, then use some thresholding method to convert the heatmap to a set of points. For example:
 
 Image of a cat\
 <img src="./media/cat_998.png" alt="Image of a cat" width="200"/>\
-Image of a cat with dots\
+Annotated image of a cat with dots denoting eye labels\
 <img src="./media/dots.png" alt="Annotated image of a cat with dots denoting eye labels" width="220"/>\
 Image of a cat with heatmap\
 <img src="./media/heatmap.png" alt="Image of a cat with heatmap" width="195"/>\
-Predicted cat heatmap\
-<img src="./media/predicted.png" alt="Trained U-Net predicts eyes heatmap" width="195"/>\
+Trained U-Net predicts eyes heatmap\
+<img src="./media/predicted.png" alt="Trained U-Net predicts eyes heatmap" width="195"/>
 
 
   
