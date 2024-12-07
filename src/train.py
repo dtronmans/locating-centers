@@ -3,30 +3,29 @@ from torch.utils.data import DataLoader, random_split
 
 from src.losses import mse_loss
 from src.unet import UNet
-from dataset import ImagePointDataset
+from src.dataset import ImagePointDataset
 from src.thresholding import basic_threshold
 
+from src.config import Config
+
 if __name__ == "__main__":
-    num_epochs = 20
-    learning_rate = 0.001
-    batch_size = 1
-    val_split = 0.2
+    config = Config("config.json")
 
     dataset = ImagePointDataset("images")
-    train_size = int((1 - val_split) * len(dataset))
+    train_size = int((1 - config.val_split) * len(dataset))
     val_size = len(dataset) - train_size
     train_dataset, val_dataset = random_split(dataset, [train_size, val_size])
 
-    train_loader = DataLoader(dataset=train_dataset, batch_size=batch_size, shuffle=True)
-    val_loader = DataLoader(dataset=val_dataset, batch_size=batch_size, shuffle=False)
+    train_loader = DataLoader(dataset=train_dataset, batch_size=config.batch_size, shuffle=True)
+    val_loader = DataLoader(dataset=val_dataset, batch_size=config.batch_size, shuffle=False)
 
     model = UNet(n_channels=3)
-    optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
+    optimizer = torch.optim.Adam(model.parameters(), lr=config.learning_rate)
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = model.to(device)
 
-    for epoch in range(num_epochs):
+    for epoch in range(config.num_epochs):
         model.train()
         running_train_loss = 0.0
 
