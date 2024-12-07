@@ -1,10 +1,10 @@
 import torch
 from torch.utils.data import DataLoader, random_split
 
-from losses.losses import mse_loss, chamfer_distance
-from models.unet import UNet
+from src.losses import mse_loss
+from src.unet import UNet
 from dataset import ImagePointDataset
-from thresholding.thresholding import basic_threshold
+from src.thresholding import basic_threshold
 
 if __name__ == "__main__":
     num_epochs = 20
@@ -70,4 +70,4 @@ if __name__ == "__main__":
 
     print("Training complete.")
 
-    torch.save(model.state_dict(), "model.pt")
+    torch.save(model.state_dict(), "../model.pt")

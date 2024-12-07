@@ -1,4 +1,4 @@
-from models.unet_parts import DoubleConv, Down, Up, OutConv
+from src.unet_parts import DoubleConv, Down, Up, OutConv
 import torch.nn as nn
 import cv2
 import torch

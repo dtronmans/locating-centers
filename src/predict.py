@@ -3,7 +3,7 @@ from torchvision import transforms
 from PIL import Image
 import matplotlib.pyplot as plt
 
-from models.unet import UNet
+from src.unet import UNet
 
 
 def predict(model_path, image_path):
@@ -33,5 +33,5 @@ def predict(model_path, image_path):
 
 
 if __name__ == "__main__":
-    predict("model.pt", "images/cat_998.png")
-    predict("model.pt", "images/cat_999.png")
+    predict("../model.pt", "images/cat_998.png")
+    predict("../model.pt", "images/cat_999.png")
