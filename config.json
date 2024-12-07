@@ -6,5 +6,8 @@
     "batch_size": 1,
     "val_split": 0.2,
     "num_channels": 3
+  },
+  "infer": {
+    "image_path": "images/cat_998.png"
   }
 }

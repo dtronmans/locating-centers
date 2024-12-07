@@ -3,6 +3,7 @@ from torchvision import transforms
 from PIL import Image
 import matplotlib.pyplot as plt
 
+from src.config import Config
 from src.unet import UNet
 
 
@@ -10,7 +11,6 @@ def predict(model_path, image_path):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = UNet(3)
 
-    # Load the pre-trained model state dictionary
     model.load_state_dict(torch.load(model_path, map_location=device))
     model.eval()
 
@@ -33,5 +33,7 @@ def predict(model_path, image_path):
 
 
 if __name__ == "__main__":
-    predict("../model.pt", "images/cat_998.png")
-    predict("../model.pt", "images/cat_999.png")
+    config = Config("config.json")
+
+    predict("model.pt", config.predict_image)
+    # predict("../model.pt", "images/cat_999.png")
