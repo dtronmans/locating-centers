@@ -26,16 +26,12 @@ def generate_gaussian_heatmap(image_size, points, sigma=5):
     for point in points:
         x, y = int(point[0]), int(point[1])
 
-        # Create a meshgrid centered around the point (x, y)
         y_grid, x_grid = np.meshgrid(np.arange(0, height), np.arange(0, width), indexing='ij')
 
-        # Compute the Gaussian centered at (x, y)
         gaussian = np.exp(-((x_grid - x) ** 2 + (y_grid - y) ** 2) / (2 * sigma ** 2))
 
-        # Add the Gaussian to the heatmap
         heatmap += gaussian
 
-    # Normalize heatmap to be between 0 and 1
     heatmap = np.clip(heatmap, 0, 1)
     return torch.tensor(heatmap, dtype=torch.float32).unsqueeze(0)
 
@@ -60,7 +56,6 @@ class ImagePointDataset(Dataset):
         return len(self.image_files)
 
     def __getitem__(self, idx):
-        # Load image
         img_name = os.path.join(self.images_folder, self.image_files[idx])
         image = Image.open(img_name).convert("RGB")
         height, width = image.size
@@ -77,7 +72,6 @@ class ImagePointDataset(Dataset):
         points = torch.tensor(points)
 
         if self.show_points:
-            # Convert PIL image to OpenCV format (BGR)
             image_cv = np.array(image)[:, :, ::-1].copy()
 
             # Draw points on the image
@@ -85,7 +79,6 @@ class ImagePointDataset(Dataset):
                 x, y = int(point[0]), int(point[1])
                 cv2.circle(image_cv, (x, y), radius=5, color=(0, 0, 255), thickness=-1)  # Red points
 
-            # Display the image with points (temporary, for debugging)
             cv2.imshow('Image with Points', image_cv)
             cv2.waitKey(0)
             cv2.destroyAllWindows()

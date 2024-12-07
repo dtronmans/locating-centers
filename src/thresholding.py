@@ -1,6 +1,4 @@
-import scipy.ndimage as ndi
 import torch
-import numpy as np
 import torch.nn.functional as F
 
 # Probably everything should be in the realm of PyTorch tensors no? To not interrupt the flow of gradients
