@@ -8,14 +8,14 @@ Infer: python -m src.predict, and change the inference settings in config.json
 ## How does it work?
 The annotated points in the image are used to make a heatmap. Each point is a Gaussian peak, and the task is to use semantic segmentation to regress the heatmap, then use some thresholding method to convert the heatmap to a set of points. For example:
 
-Image of a cat
-<img src="./media/cat_998.png" alt="Image of a cat" width="200"/>
-Image of a cat with dots
-<img src="./media/dots.png" alt="Image of a cat with dots" width="220"/>
-Image of a cat with heatmap
-<img src="./media/heatmap.png" alt="Image of a cat with heatmap" width="195"/>
-Predicted cat heatmap
-<img src="./media/predicted.png" alt="Predicted cat heatmap" width="195"/>
+Image of a cat\
+<img src="./media/cat_998.png" alt="Image of a cat" width="200"/>\
+Image of a cat with dots\
+<img src="./media/dots.png" alt="Image of a cat with dots" width="220"/>\
+Image of a cat with heatmap\
+<img src="./media/heatmap.png" alt="Image of a cat with heatmap" width="195"/>\
+Predicted cat heatmap\
+<img src="./media/predicted.png" alt="Predicted cat heatmap" width="195"/>\
 
 
 ## Making or formatting a dataset  
