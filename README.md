@@ -50,3 +50,9 @@ If you already have a dataset of images and points, you can adapt it to this rep
 
 ## Making your custom loss function
 ## Making your custom thresholding function
+## Making your custom model
+## Making your custom heatmap generator
+
+You can experiment with the way the heatmap is generated and try out new ways of generating a heatmap to see how results change depending on the heatmap.
+If you would like to use the Gaussian but with a different sigma value (variance in both directions), then change the gaussian_sigma value in the config.
+If you would like to define a new way to generate a heatmap instead, the arguments and returns should be the same as prescribed in the comments of the generate_gaussian_heatmap method in src.dataset.

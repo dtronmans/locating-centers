@@ -13,6 +13,7 @@ class Config:
         self.batch_size = self.get_nested(config, ['train', 'batch_size'])
         self.val_split = self.get_nested(config, ['train', 'val_split'])
         self.num_channels = self.get_nested(config, ['train', 'num_channels'])
+        self.gaussian_sigma = self.get_nested(config, ['train', 'gaussian_sigma'])
 
         self.predict_image = self.get_nested(config, ['infer', 'image_path'])
 

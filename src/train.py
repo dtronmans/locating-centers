@@ -11,7 +11,7 @@ from src.config import Config
 if __name__ == "__main__":
     config = Config("config.json")
 
-    dataset = ImagePointDataset("images")
+    dataset = ImagePointDataset("images", sigma=config.gaussian_sigma)
     train_size = int((1 - config.val_split) * len(dataset))
     val_size = len(dataset) - train_size
     train_dataset, val_dataset = random_split(dataset, [train_size, val_size])
@@ -19,7 +19,7 @@ if __name__ == "__main__":
     train_loader = DataLoader(dataset=train_dataset, batch_size=config.batch_size, shuffle=True)
     val_loader = DataLoader(dataset=val_dataset, batch_size=config.batch_size, shuffle=False)
 
-    model = UNet(n_channels=3)
+    model = UNet(n_channels=config.num_channels)
     optimizer = torch.optim.Adam(model.parameters(), lr=config.learning_rate)
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -63,7 +63,7 @@ if __name__ == "__main__":
 
         avg_val_loss = running_val_loss / len(val_loader)
 
-        print(f"Epoch [{epoch + 1}/{num_epochs}], "
+        print(f"Epoch [{epoch + 1}/{config.num_epochs}], "
               f"Train Loss: {avg_train_loss:.4f}, "
               f"Val Loss: {avg_val_loss:.4f}")
 
