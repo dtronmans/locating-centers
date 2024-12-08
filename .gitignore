@@ -224,7 +224,4 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 .idea/
 
-!media/cat_998.png
-!media/dots.png
-!media/heatmap.png
-!media/predicted.png
+!media/*
