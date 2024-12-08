@@ -2,8 +2,11 @@ import torch
 from torchvision import transforms
 from PIL import Image
 import matplotlib.pyplot as plt
+import numpy as np
+import cv2
 
 from src.config import Config
+from src.thresholding import basic_threshold
 from src.unet import UNet
 
 
@@ -23,12 +26,23 @@ def predict(model_path, image_path):
 
     with torch.no_grad():
         output = model(image_tensor)
+        predicted_points = basic_threshold(output)
 
     output_to_visualize = output.squeeze(0).cpu().numpy()
 
     plt.imshow(output_to_visualize[0], cmap='hot', interpolation='nearest')
     plt.colorbar()
     plt.title('Predicted Heatmap')
+
+    image_np = np.array(image)
+    for point in predicted_points[0]:
+        y, x = point.numpy()
+        image_np = cv2.circle(image_np, (x, y), radius=1, color=(255, 0, 0), thickness=-1)
+
+    plt.imshow(image_np)
+    plt.title('Image with Predicted Points')
+    plt.axis('off')
+
     plt.show()
 
 

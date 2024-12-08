@@ -16,6 +16,8 @@ class Config:
 
         self.predict_image = self.get_nested(config, ['infer', 'image_path'])
 
+        self.annotator_image_path = self.get_nestd(config, ['annotate', 'dataset_path'])
+
     def __repr__(self):
         return f"Config({self.__dict__})"
 

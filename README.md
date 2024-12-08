@@ -12,14 +12,17 @@ Image of a cat\
 <img src="./media/cat_998.png" alt="Image of a cat" width="200"/>\
 Annotated image of a cat with dots denoting eye labels\
 <img src="./media/dots.png" alt="Annotated image of a cat with dots denoting eye labels" width="220"/>\
-Image of a cat with heatmap\
+Ground truth heatmap\
 <img src="./media/heatmap.png" alt="Image of a cat with heatmap" width="195"/>\
 Trained U-Net predicts eyes heatmap\
-<img src="./media/predicted.png" alt="Trained U-Net predicts eyes heatmap" width="195"/>
-
-
+<img src="./media/predicted.png" alt="Trained U-Net predicts eyes heatmap" width="195"/>\
+Basic thresholding on the prediction\
+<img src="./media/threshold.png" alt="Basic thresholding on the prediction" width="195"/>
   
 ## Basic usage
+
+Very first installation steps: create a conda evironment (this is tested on Python 3.11.5), activate the conda environment and run pip install -r requirements.txt
+
 Train: python -m src.train, and change the train settings in config.json.\
 Infer: python -m src.predict, and change the inference settings in config.json
 
@@ -35,6 +38,8 @@ You have two options:
 
 ### 1. Making your own Dataset class
 ### 2. (Recommended) Use the current prescribed Dataset architecture
+
+In this case, run python -m annotator.annotate. The path with images to annotate should be set in the "annotate" part of the config. Click on the points and close the image when you are done. The next image will automatically open.
 
 ## Making your custom loss function
 ## Making your custom thresholding function

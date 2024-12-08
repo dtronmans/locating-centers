@@ -2,6 +2,8 @@ import cv2
 import matplotlib.pyplot as plt
 import os
 
+from src.config import Config
+
 
 class Annotator:
 
@@ -45,5 +47,6 @@ class Annotator:
 
 
 if __name__ == "__main__":
-    annotator = Annotator(images_path="images")
+    config = Config("config.json")
+    annotator = Annotator(images_path=config.images_path)
     annotator.annotate()

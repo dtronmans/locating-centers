@@ -9,5 +9,8 @@
   },
   "infer": {
     "image_path": "images/cat_998.png"
+  },
+  "annotate": {
+    "dataset_path": "images"
   }
 }

@@ -1,6 +1,7 @@
 import torch
 import torch.nn.functional as F
 
+
 # Probably everything should be in the realm of PyTorch tensors no? To not interrupt the flow of gradients
 
 
@@ -40,30 +41,5 @@ def basic_threshold(predicted_heatmaps, threshold=0.1):
     return coordinates_list
 
 
-def soft_thresholding(heatmap):
-    assert heatmap.dim() == 2, "Heatmap must be a 2D tensor"
-
-    # Get the dimensions of the heatmap
-    height, width = heatmap.shape
-
-    # Create coordinate grids
-    x = torch.arange(width, dtype=torch.float32, device=heatmap.device)
-    y = torch.arange(height, dtype=torch.float32, device=heatmap.device)
-
-    # Expand coordinates to match the heatmap shape
-    x = x.unsqueeze(0).expand(height, width)
-    y = y.unsqueeze(1).expand(height, width)
-
-    # Flatten the heatmap and coordinates for softmax
-    heatmap_flat = heatmap.view(-1)
-    x_flat = x.view(-1)
-    y_flat = y.view(-1)
-
-    # Apply softmax to the heatmap
-    softmax = torch.nn.functional.softmax(beta * heatmap_flat, dim=0)
-
-    # Compute the expected x and y coordinates
-    expected_x = torch.sum(x_flat * softmax)
-    expected_y = torch.sum(y_flat * softmax)
-
-    return torch.tensor([expected_x, expected_y], device=heatmap.device)
+if __name__ == "__main__":
+    pass
