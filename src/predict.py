@@ -39,6 +39,7 @@ def predict(model_path, image_path):
         y, x = point.numpy()
         image_np = cv2.circle(image_np, (x, y), radius=1, color=(255, 0, 0), thickness=-1)
 
+    plt.subplot(1, 2, 2)
     plt.imshow(image_np)
     plt.title('Image with Predicted Points')
     plt.axis('off')

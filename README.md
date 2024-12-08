@@ -34,12 +34,19 @@ Infer: python -m src.predict, and change the inference settings in config.json
 You have two options:
 
  1. Make your own Dataset class according to your dataset format.
- 2. Using the ImagePointDataset class already provided to you, and adapting your current dataset to the requirements/making a new dataset from scratch using the annotator.
+ 2. (Recommended) Using the ImagePointDataset class already provided to you, and adapting your current dataset to the requirements/making a new dataset from scratch using the annotator.
 
 ### 1. Making your own Dataset class
 ### 2. (Recommended) Use the current prescribed Dataset architecture
 
 In this case, run python -m annotator.annotate. The path with images to annotate should be set in the "annotate" part of the config. Click on the points and close the image when you are done. The next image will automatically open.
+
+You will then have a dataset that is formatted in a way that can be used immediately with the ImagePointDataset class with no changes.
+
+If you already have a dataset of images and points, you can adapt it to this repository's format in this way:
+
+1. Have individual text files for each image, named after the image. For example, if you have cat_998.png and cat_999.png in a folder directory, you should now also have cat_998.txt and cat_999.txt in this directory.
+2. Each txt file should have, for each line, 2 decimal values between 0 and 1. For example: 0.16751217532467527,0.3955064033189033. This is the relative position of a point within the image.
 
 ## Making your custom loss function
 ## Making your custom thresholding function
