@@ -8,17 +8,23 @@ All aspects of this repository like the losses, thresholding function or heatmap
 ## How does it work?
 The annotated points in the image are used to make a heatmap. Each point is a Gaussian peak, and the task is to use semantic segmentation to regress the heatmap, then use some thresholding method to convert the heatmap to a set of points. For example:
 
-Image of a cat\
-<img src="./media/cat_998.png" alt="Image of a cat" width="200"/>\
-Annotated image of a cat with dots denoting eye labels\
-<img src="./media/dots.png" alt="Annotated image of a cat with dots denoting eye labels" width="220"/>\
-Ground truth heatmap\
-<img src="./media/heatmap.png" alt="Image of a cat with heatmap" width="195"/>\
-Trained U-Net predicts eyes heatmap\
-<img src="./media/predicted.png" alt="Trained U-Net predicts eyes heatmap" width="195"/>\
-Basic thresholding on the prediction\
-<img src="./media/threshold.png" alt="Basic thresholding on the prediction" width="195"/>
-  
+<table>
+  <tr>
+    <th>Image of a cat</th>
+    <th>Annotated image with dots</th>
+    <th>Ground truth heatmap</th>
+    <th>Predicted heatmap</th>
+    <th>Thresholding on prediction</th>
+  </tr>
+  <tr>
+    <td><img src="./media/cat_998.png" alt="Image of a cat" width="150"/></td>
+    <td><img src="./media/dots.png" alt="Annotated image of a cat with dots denoting eye labels" width="150"/></td>
+    <td><img src="./media/heatmap.png" alt="Image of a cat with heatmap" width="150"/></td>
+    <td><img src="./media/predicted.png" alt="Trained U-Net predicts eyes heatmap" width="150"/></td>
+    <td><img src="./media/threshold.png" alt="Basic thresholding on the prediction" width="150"/></td>
+  </tr>
+</table>
+
 ## Basic usage
 
 Very first installation steps: create a conda evironment (this is tested on Python 3.11.5), activate the conda environment and run pip install -r requirements.txt
